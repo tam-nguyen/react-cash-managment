@@ -1,6 +1,6 @@
 ## Getting Started
 
-<p>To get started, first install all the necessary dependencies.</p>
+<p>Install all the necessary dependencies.</p>
 <pre>
 <code>> npm install</code>
 </pre>
