@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AddTransaction from './components/AddTransaction'
+import AddTransaction from './components/Transaction/Transaction'
 import Report from './components/Report'
 
 class App extends Component {
