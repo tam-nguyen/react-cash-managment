@@ -1,35 +1,21 @@
 import React, { Component } from 'react';
-import ReportDetails from './ReportDetails'
+
 class Report extends Component {
     render() {
         let transactionItems;
-        let total = 0, temp=[];
-        
         if (this.props.transactionInfo) {
             transactionItems = this.props.transactionInfo.map((transactionDetails, i) => {
-               
                 return (
-                    <ReportDetails key={i} {...transactionDetails} />
+                    <tr key={i}>
+                        <td>{i}</td>
+                        <td>{transactionDetails.date}</td>
+                        <td>{transactionDetails.merchant}</td>
+                        <td>{transactionDetails.transaction}</td>
+                    </tr>
                 )
-
             })
         }
-    
-        this.props.transactionInfo.map((transactionValue,i) => {
-            if(transactionValue.transaction){
-                temp.push(parseInt(transactionValue.transaction));
-                total = temp.reduce((pre,next) => {
-                    return pre + next;
-                })
-            }
 
-           
-
-
-        })
-    
- 
-        
         return (
             <div className="Report">
 
@@ -51,14 +37,11 @@ class Report extends Component {
                                 <th>Total</th>
                                 <th></th>
                                 <th></th>
-                                <th>{total}</th>
+                                <th>{this.props.total}</th>
                             </tr>
                         </tfoot>
                     </table>
                 </div>
-
-
-
             </div>
         );
     }
