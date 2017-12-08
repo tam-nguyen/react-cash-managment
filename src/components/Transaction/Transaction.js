@@ -1,53 +1,83 @@
-import React, { Component } from 'react';
-import classes from './Transaction.css'
-class AddTransaction extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            newTransaction:{}
-        }
-    }
-    
-    handleSubmit(e){
-        e.preventDefault();
-        this.setState({newTransaction:{
-            transaction: this.refs.addtransaction.value,
-            merchant: this.refs.merchant.value,
-            date: this.refs.date.value
-        }}, function(){
-            this.props.addTransaction(this.state.newTransaction);
-        })
-    }
-    
-    render() {
-        return (
-            <div className="Transaction">
-                <form onSubmit={this.handleSubmit.bind(this)}>
-                <div className="form-group row">
-                  <label htmlFor="addtransaction" className="col-sm-4 col-form-label">Add Transaction</label>
-                  <div className="col-sm-8">
-                  <input type="number" className="form-control" id="addtransaction" ref="addtransaction"/>
-                  </div>
-                 
-                </div>
-                <div className="form-group row">
-                  <label htmlFor="merchant" className="col-sm-4 col-form-label">Merchant</label>
-                  <div className="col-sm-8">
-                  <input type="text" className="form-control" id="merchant" ref="merchant"/>
-                  </div>
-                </div>
-                <div className="form-group row">
-                  <label htmlFor="date" className="col-sm-4 col-form-label">Date</label>
-                  <div className="col-sm-8">
-                  <input type="date" className="form-control" id="date" ref="date"/>
-                  </div>
-                </div>
+import React, { Component } from "react";
+import styles from "./Transaction.css";
 
-                <button type="submit" className="btn btn-default">Submit</button>
-              </form>
-            </div>
-        );
-    }
+class AddTransaction extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      newTransaction: {}
+    };
+  }
+
+  handleSubmit = e => {
+    e.preventDefault();
+    this.setState(
+      {
+        newTransaction: {
+          transaction: this.refs.addtransaction.value,
+          merchant: this.refs.merchant.value,
+          date: this.refs.date.value
+        }
+      },
+      function() {
+        this.props.addTransaction(this.state.newTransaction);
+      }
+    );
+    this.refs.addtransaction.value = "";
+    this.refs.merchant.value = "";
+    this.refs.date.value = "";
+  };
+
+  render() {
+    let classes = ['bg-inverse','text-white'].join(' ');
+    return (
+      <div className={styles.Transaction}>
+        <form onSubmit={this.handleSubmit}>
+          <table className="table table-bordered">
+          <thead className={classes}>
+              <tr>
+                <th  width="25%">Date</th>
+                <th >Merchant</th>
+                <th  width="25%">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row" width="25%">
+                  <input
+                    type="date"
+                    className="form-control"
+                    id="date"
+                    ref="date"
+                  />
+                </th>
+                <td>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="merchant"
+                    ref="merchant"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    className="form-control"
+                    id="addtransaction"
+                    ref="addtransaction"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <button type="submit" className="btn btn-default">
+            Add
+          </button>
+        </form>
+      </div>
+    );
+  }
 }
 
 export default AddTransaction;
