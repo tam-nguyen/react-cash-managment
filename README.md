@@ -1,4 +1,4 @@
-> Demo: https://nervous-bhaskara-cf9e07.netlify.com/
+> Demo: https://suspicious-kilby-1daa6d.netlify.com/
 <p>Install all the necessary dependencies.</p>
 <pre>
 <code>> npm install</code>
