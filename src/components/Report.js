@@ -5,6 +5,11 @@ class Report extends Component {
     this.props.onDelete(i);
   }
 
+  editEle(i){
+    
+    this.props.onEdit(i);
+  }
+
   render() {
     let transactionItems;
     if (this.props.transactionInfo) {
@@ -12,7 +17,7 @@ class Report extends Component {
         return (
           <tr key={i}>
             <td>{i}</td>
-            <td>{new Date(transactionEle.date).toDateString().slice(4)}</td>
+            <td>{transactionEle.date}</td>
             <td>{transactionEle.merchant}</td>
             <td>{transactionEle.transaction}</td>
             <td>
@@ -21,6 +26,13 @@ class Report extends Component {
                 onClick={this.deleleEle.bind(this, i)}
               >
                 Delete
+              </button>
+              <span>&nbsp;</span>
+              <button
+                className="btn btn-info"
+                onClick={this.editEle.bind(this, i)}
+              >
+                Edit
               </button>
             </td>
           </tr>
