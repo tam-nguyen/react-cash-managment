@@ -72,6 +72,7 @@ class AddTransaction extends Component {
                     type="number"
                     className="form-control"
                     id="addtransaction"
+                   
                     ref="addtransaction"
                     onChange={event => this.valueMutation(event)}
                   />

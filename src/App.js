@@ -11,7 +11,8 @@ class App extends Component {
       transactionInfo: [],
       total: 0,
       showEdit: false,
-      transactionInfoEditMode: []
+      transactionInfoEditMode: [],
+      indexTransactionItem: null
     };
   }
 
@@ -39,18 +40,36 @@ class App extends Component {
 
   handlerEdit(i){
     let transaction = this.state.transactionInfo[i];
-    this.setState({showEdit: true, transactionInfoEditMode: transaction})
+    this.setState({showEdit: true, transactionInfoEditMode: transaction, indexTransactionItem: i})
   }
-  close(e){
-    let transaction = e
-    console.log(transaction)
-    console.log(this.transactionInfoEditMode) 
-    this.setState({showEdit:false})
+  close(e, index){
+    let transaction = this.state.transactionInfo.slice();
+    let currentTotal = this.state.total;
+    
+    if(transaction[index].transaction < e.state.updatedTransaction) {
+      let temp = e.state.updatedTransaction - transaction[index].transaction;
+      currentTotal = currentTotal + temp;
+    }else{
+      let temp = transaction[index].transaction - e.state.updatedTransaction;
+      currentTotal = currentTotal - temp;
+    }
+    
+    transaction[index].transaction = e.state.updatedTransaction;
+    transaction[index].date = e.state.updatedDate;
+    transaction[index].merchant = e.state.updatedMerchant;
+
+    
+    
+    this.setState({ 
+      showEdit: false, 
+      transactionInfo: transaction,
+      total: currentTotal
+    });
   }
   render() {
     return (
       <div className="App container">
-        <h1></h1>
+        <h1> </h1>
         <AddTransaction addTransaction={this.handleAddTransaction} />
         <Report
           transactionInfo={this.state.transactionInfo}
@@ -58,8 +77,14 @@ class App extends Component {
           onDelete={this.handlerDelete.bind(this)}
           onEdit={this.handlerEdit.bind(this)}
         />
-        <Modal show={this.state.showEdit} onHide={this.close.bind(this)} >
-            <BackDrop onClose={this.close.bind(this)} transactioninfo={this.state.transactionInfoEditMode}/>
+        <Modal 
+          show={this.state.showEdit} 
+          onHide={this.close.bind(this)} >
+            <BackDrop 
+              onClose={this.close.bind(this)} 
+              transactioninfo={this.state.transactionInfoEditMode}
+              index = {this.state.indexTransactionItem}
+              />
         </Modal>
       </div>
     );

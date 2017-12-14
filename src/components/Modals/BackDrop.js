@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/lib/Button";
 import Modal from "react-bootstrap/lib/Modal";
-import ControlLabel from "react-bootstrap/lib/ControlLabel";
+
 
 
 class BackDrop extends Component {
   state={
     updatedDate: this.props.transactioninfo.date,
     updatedMerchant: this.props.transactioninfo.merchant,
-    updatedTransaction: this.props.transactioninfo.transaction
+    updatedTransaction: this.props.transactioninfo.transaction,
+    index: this.props.index
   }
   onSave(){
-    
-    this.props.onClose(this);
+    this.props.onClose(this, this.state.index);
   }
 
   updatingDate = (e) =>{
@@ -41,7 +41,7 @@ class BackDrop extends Component {
           <table className="table table-bordered">
           <tbody>
           <tr>
-            <td scope="row" width="25%">
+            <td  width="25%">
               <input
                 type="date"
                 className="form-control"
