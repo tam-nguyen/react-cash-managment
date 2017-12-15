@@ -11,6 +11,9 @@ class BackDrop extends Component {
     updatedTransaction: this.props.transactioninfo.transaction,
     index: this.props.index
   }
+  onCancel(){
+    this.props.onClose();
+  }
   onSave(){
     this.props.onClose(this, this.state.index);
   }
@@ -39,6 +42,13 @@ class BackDrop extends Component {
           </Modal.Header>
           <Modal.Body>
           <table className="table table-bordered">
+          <thead>
+              <tr>
+                <th width="25%">Date</th>
+                <th>Merchant</th>
+                <th width="25%">Amount</th>
+              </tr>
+            </thead>
           <tbody>
           <tr>
             <td  width="25%">
@@ -77,6 +87,7 @@ class BackDrop extends Component {
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.onSave.bind(this)}>Save</Button>
+           
           </Modal.Footer>
          
       </div>

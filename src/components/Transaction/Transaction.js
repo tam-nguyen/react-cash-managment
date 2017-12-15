@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styles from "./Transaction.css";
+import './Transaction.css';
 
 class AddTransaction extends Component {
   constructor(props) {
@@ -37,57 +37,73 @@ class AddTransaction extends Component {
     }
   }
   render() {
-    let classes = ["bg-inverse", "text-white"].join(" ");
+
     return (
-      <div className={styles.Transaction}>
+      <div className="Transaction">
+      <h2>Add Transaction</h2>
         <form onSubmit={this.handleSubmit}>
-          <table className="table table-bordered">
-            <thead className={classes}>
-              <tr>
-                <th width="25%">Date</th>
-                <th>Merchant</th>
-                <th width="25%">Amount</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row" width="25%">
-                  <input
-                    type="date"
-                    className="form-control"
-                    id="date"
-                    ref="date"
-                  />
-                </th>
-                <td>
-                  <input
+
+          <div className="input-item">
+            <div className="left-col">
+            <i className="fa fa-calendar" aria-hidden="true"></i>
+            </div>
+            <div className="right-col">
+              <input
+                      type="date"
+                      className="input-box"
+                      id="date"
+                      ref="date"
+                    />
+                     <hr className="hr"/>
+            </div>
+          </div>
+          <div className="clear"></div>
+          <div className="input-item">
+            <div className="left-col">
+            <i class="fa fa-location-arrow" aria-hidden="true"></i>
+            </div>
+            <div className="right-col">
+            <input
                     type="text"
-                    className="form-control"
+                    className="input-box"
                     id="merchant"
                     ref="merchant"
+                    placeholder="Merchandise"
+                    required
                   />
-                </td>
-                <td>
-                  <input
+                     <hr className="hr"/>
+            </div>
+          </div>
+          <div className="clear"></div>
+          <div className="input-item">
+            <div className="left-col">
+            <i class="fa fa-usd" aria-hidden="true"></i>
+            </div>
+            <div className="right-col">
+            <input
                     type="number"
-                    className="form-control"
+                    className="input-box"
                     id="addtransaction"
-                   
+                   placeholder="Amount"
                     ref="addtransaction"
                     onChange={event => this.valueMutation(event)}
                   />
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                    <hr className="hr"/>
+            </div>
+          </div>
+          <div className="clear"></div>
 
+
+
+          <div className="center">
           <button
             type="submit"
-            className="btn btn-default"
+            className="btn btn-primary"
             disabled={!this.state.disabled}
           >
             Add
           </button>
+          </div>
         </form>
       </div>
     );

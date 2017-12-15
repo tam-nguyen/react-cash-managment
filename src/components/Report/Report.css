@@ -1,0 +1,34 @@
+.Report {
+    width: 600px;
+    margin: 0 auto;
+}
+.report-item{
+    
+    margin-top:20px;
+}
+.button-function{
+float:left;
+}
+.report-detail{
+    display: table;
+    border-bottom: 1px solid rgb(224, 224, 224);
+    width: 90%;
+    padding-left: 20px;
+}
+.transaction-date{
+    width: 25%;
+    display: table-cell;
+}
+.transaction-merchant{
+    width: 60%;
+    display: table-cell;
+}
+.transaction-transaction{
+    width: 15%;
+    display: table-cell;
+    text-align: right;
+}
+.total{
+    margin-top: 20px;
+    float:right;
+}

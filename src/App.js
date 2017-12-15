@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import AddTransaction from "./components/Transaction/Transaction";
-import Report from "./components/Report";
+import Report from "./components/Report/Report";
 import BackDrop from './components/Modals/BackDrop'
 import Modal from "react-bootstrap/lib/Modal";
 
@@ -69,7 +69,7 @@ class App extends Component {
   render() {
     return (
       <div className="App container">
-        <h1> </h1>
+        
         <AddTransaction addTransaction={this.handleAddTransaction} />
         <Report
           transactionInfo={this.state.transactionInfo}
