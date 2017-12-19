@@ -52,6 +52,11 @@
 .clear{
     clear: both;
 }
+#example-datepicker{
+    border:none;
+    width: 100%;
+    outline: none;
+}
 @media (min-width: 576px) { 
     /* .Transaction{
         width: 500px;

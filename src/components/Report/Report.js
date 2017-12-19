@@ -51,7 +51,7 @@ class Report extends Component {
       <div className="Report">
         {this.props.transactionInfo.length > 0 && (
           <div>
-          <h4>Over View</h4>
+          <h4>Overview</h4>
           <div>{transactionItems}</div>
           <div className="total"><b>Total</b>: ${this.props.total}</div>
           </div>
